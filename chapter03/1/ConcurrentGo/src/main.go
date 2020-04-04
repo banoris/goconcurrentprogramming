@@ -1,19 +1,19 @@
 package main 
  
 import (
-	"fmt" 
+    "fmt" 
 )
 
 func main() { 
-	ch := make(chan string,1)
-	
-	ch <- "Hello"
-	
-	fmt.Println(<-ch)
-	
-	ch <- "Go"
-	
-	fmt.Println(<-ch)
+    ch := make(chan string,1)
+    
+    ch <- "Hello"
+    
+    fmt.Println(<-ch)
+    
+    ch <- "Go"
+    
+    fmt.Println(<-ch)
 }
 
 /*
@@ -21,15 +21,15 @@ func main() {
 package main 
  
 import (
-	"fmt" 
+    "fmt" 
 )
 
 func main() { 
-	ch := make(chan string)
-	
-	ch <- "Hello"
-	
-	fmt.Println(<-ch)
+    ch := make(chan string)
+    
+    ch <- "Hello"
+    
+    fmt.Println(<-ch)
 }
 */
 
@@ -38,15 +38,15 @@ func main() {
 package main 
  
 import (
-	"fmt" 
+    "fmt" 
 )
 
 func main() { 
-	ch := make(chan string,1)
-	
-	ch <- "Hello"
-	
-	fmt.Println(<-ch)
+    ch := make(chan string,1)
+    
+    ch <- "Hello"
+    
+    fmt.Println(<-ch)
 }
 */
 
@@ -55,18 +55,18 @@ func main() {
 package main 
  
 import (
-	"fmt" 
+    "fmt" 
 )
 
 func main() { 
-	ch := make(chan string,1)
-	
-	ch <- "Hello"
-	
-	fmt.Println(<-ch)
-	
-	ch <- "Go"
-	
-	fmt.Println(<-ch)
+    ch := make(chan string,1)
+    
+    ch <- "Hello"
+    
+    fmt.Println(<-ch)
+    
+    ch <- "Go"
+    
+    fmt.Println(<-ch)
 }
 */

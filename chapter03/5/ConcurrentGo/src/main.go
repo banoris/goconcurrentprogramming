@@ -1,76 +1,76 @@
 package main 
  
 import (
-	"fmt"
+    "fmt"
 ) 
 
 func main() { 
-	
-	msgCh := make(chan Message, 1)
-	errCh := make(chan FailedMessage, 1)
-	
-	select {
-		case receivedMsg := <- msgCh:
-			fmt.Println(receivedMsg)
-		case receivedError := <- errCh:
-			fmt.Println(receivedError)
-		default:
-			fmt.Println("No messages received")
-	}
-	
+    
+    msgCh := make(chan Message, 1)
+    errCh := make(chan FailedMessage, 1)
+    
+    select {
+        case receivedMsg := <- msgCh:
+            fmt.Println(receivedMsg)
+        case receivedError := <- errCh:
+            fmt.Println(receivedError)
+        default:
+            fmt.Println("No messages received")
+    }
+    
 }
 
 type Message struct {
-	To []string
-	From string
-	Content string
+    To []string
+    From string
+    Content string
 }
 
 type FailedMessage struct {
-	ErrorMessage string
-	OriginalMessage Message
+    ErrorMessage string
+    OriginalMessage Message
 }
 
 /* 3.5.1 - demo setup
 package main 
  
 import (
-	"fmt"
+    "fmt"
 )
 
 func main() { 
-	
-	msgCh := make(chan Message, 1)
-	errCh := make(chan FailedMessage, 1)
-	
-	msg := Message{
-		To: []string{"bilbo@underhill.me"},
-		From: "gandalf@whitecouncil.org",
-		Content: "Keep it secret, keep it safe",
-	}
-	
-	failedMessage := FailedMessage{
-		ErrorMessage: "Message intercepted by black rider",
-		OriginalMessage: Message{},
-	}
-	
-	msgCh <- msg
-	errCh <- failedMessage
-	
-	fmt.Println(<-msgCh)
-	fmt.Println(<-errCh)
-	
+    
+    msgCh := make(chan Message, 1)
+    errCh := make(chan FailedMessage, 1)
+    
+    msg := Message{
+        To: []string{"bilbo@underhill.me"},
+        From: "gandalf@whitecouncil.org",
+        Content: "Keep it secret, keep it safe",
+    }
+    
+    failedMessage := FailedMessage{
+        ErrorMessage: "Message intercepted by black rider",
+        OriginalMessage: Message{},
+    }
+    
+    msgCh <- msg
+    errCh <- failedMessage
+    
+    fmt.Println(<-msgCh)
+    fmt.Println(<-errCh)
+    
 }
 
 type Message struct {
-	To []string
-	From string
-	Content string
+    To []string
+    From string
+    Content string
 }
 
 type FailedMessage struct {
-	ErrorMessage string
-	OriginalMessage Message
+    ErrorMessage string
+    OriginalMessage Message
 }
 */
 
@@ -78,40 +78,40 @@ type FailedMessage struct {
 package main 
  
 import (
-	"fmt"
+    "fmt"
 )
 
 func main() { 
-	
-	msgCh := make(chan Message, 1)
-	errCh := make(chan FailedMessage, 1)
-	
-	msg := Message{
-		To: []string{"bilbo@underhill.me"},
-		From: "gandalf@whitecouncil.org",
-		Content: "Keep it secret, keep it safe",
-	}
-	
-	msgCh <- msg
-	
-	select {
-		case receivedMsg := <- msgCh:
-			fmt.Println(receivedMsg)
-		case receivedError := <- errCh:
-			fmt.Println(receivedError)
-	}
-	
+    
+    msgCh := make(chan Message, 1)
+    errCh := make(chan FailedMessage, 1)
+    
+    msg := Message{
+        To: []string{"bilbo@underhill.me"},
+        From: "gandalf@whitecouncil.org",
+        Content: "Keep it secret, keep it safe",
+    }
+    
+    msgCh <- msg
+    
+    select {
+        case receivedMsg := <- msgCh:
+            fmt.Println(receivedMsg)
+        case receivedError := <- errCh:
+            fmt.Println(receivedError)
+    }
+    
 }
 
 type Message struct {
-	To []string
-	From string
-	Content string
+    To []string
+    From string
+    Content string
 }
 
 type FailedMessage struct {
-	ErrorMessage string
-	OriginalMessage Message
+    ErrorMessage string
+    OriginalMessage Message
 }
 */
 
@@ -119,45 +119,45 @@ type FailedMessage struct {
 package main 
  
 import (
-	"fmt"
+    "fmt"
 )
 
 func main() { 
-	
-	msgCh := make(chan Message, 1)
-	errCh := make(chan FailedMessage, 1)
-	
-	msg := Message{
-		To: []string{"bilbo@underhill.me"},
-		From: "gandalf@whitecouncil.org",
-		Content: "Keep it secret, keep it safe",
-	}
-	
-	failedMessage := FailedMessage{
-		ErrorMessage: "Message intercepted by black rider",
-		OriginalMessage: Message{},
-	}
+    
+    msgCh := make(chan Message, 1)
+    errCh := make(chan FailedMessage, 1)
+    
+    msg := Message{
+        To: []string{"bilbo@underhill.me"},
+        From: "gandalf@whitecouncil.org",
+        Content: "Keep it secret, keep it safe",
+    }
+    
+    failedMessage := FailedMessage{
+        ErrorMessage: "Message intercepted by black rider",
+        OriginalMessage: Message{},
+    }
 
-	errCh <- failedMessage
-	
-	select {
-		case receivedMsg := <- msgCh:
-			fmt.Println(receivedMsg)
-		case receivedError := <- errCh:
-			fmt.Println(receivedError)
-	}
-	
+    errCh <- failedMessage
+    
+    select {
+        case receivedMsg := <- msgCh:
+            fmt.Println(receivedMsg)
+        case receivedError := <- errCh:
+            fmt.Println(receivedError)
+    }
+    
 }
 
 type Message struct {
-	To []string
-	From string
-	Content string
+    To []string
+    From string
+    Content string
 }
 
 type FailedMessage struct {
-	ErrorMessage string
-	OriginalMessage Message
+    ErrorMessage string
+    OriginalMessage Message
 }
 */
 
@@ -165,46 +165,46 @@ type FailedMessage struct {
 package main 
  
 import (
-	"fmt"
+    "fmt"
 ) 
 
 func main() { 
-	
-	msgCh := make(chan Message, 1)
-	errCh := make(chan FailedMessage, 1)
-	
-	msg := Message{
-		To: []string{"bilbo@underhill.me"},
-		From: "gandalf@whitecouncil.org",
-		Content: "Keep it secret, keep it safe",
-	}
-	
-	failedMessage := FailedMessage{
-		ErrorMessage: "Message intercepted by black rider",
-		OriginalMessage: Message{},
-	}
-	
-	msgCh <- msg
-	errCh <- failedMessage
-	
-	select {
-		case receivedMsg := <- msgCh:
-			fmt.Println(receivedMsg)
-		case receivedError := <- errCh:
-			fmt.Println(receivedError)
-	}
-	
+    
+    msgCh := make(chan Message, 1)
+    errCh := make(chan FailedMessage, 1)
+    
+    msg := Message{
+        To: []string{"bilbo@underhill.me"},
+        From: "gandalf@whitecouncil.org",
+        Content: "Keep it secret, keep it safe",
+    }
+    
+    failedMessage := FailedMessage{
+        ErrorMessage: "Message intercepted by black rider",
+        OriginalMessage: Message{},
+    }
+    
+    msgCh <- msg
+    errCh <- failedMessage
+    
+    select {
+        case receivedMsg := <- msgCh:
+            fmt.Println(receivedMsg)
+        case receivedError := <- errCh:
+            fmt.Println(receivedError)
+    }
+    
 }
 
 type Message struct {
-	To []string
-	From string
-	Content string
+    To []string
+    From string
+    Content string
 }
 
 type FailedMessage struct {
-	ErrorMessage string
-	OriginalMessage Message
+    ErrorMessage string
+    OriginalMessage Message
 }
 */
 
@@ -212,32 +212,32 @@ type FailedMessage struct {
 package main 
  
 import (
-	"fmt"
+    "fmt"
 ) 
 
 func main() { 
-	
-	msgCh := make(chan Message, 1)
-	errCh := make(chan FailedMessage, 1)
-	
-	select {
-		case receivedMsg := <- msgCh:
-			fmt.Println(receivedMsg)
-		case receivedError := <- errCh:
-			fmt.Println(receivedError)
-	}
-	
+    
+    msgCh := make(chan Message, 1)
+    errCh := make(chan FailedMessage, 1)
+    
+    select {
+        case receivedMsg := <- msgCh:
+            fmt.Println(receivedMsg)
+        case receivedError := <- errCh:
+            fmt.Println(receivedError)
+    }
+    
 }
 
 type Message struct {
-	To []string
-	From string
-	Content string
+    To []string
+    From string
+    Content string
 }
 
 type FailedMessage struct {
-	ErrorMessage string
-	OriginalMessage Message
+    ErrorMessage string
+    OriginalMessage Message
 }
 */
 
@@ -245,33 +245,33 @@ type FailedMessage struct {
 package main 
  
 import (
-	"fmt"
+    "fmt"
 ) 
 
 func main() { 
-	
-	msgCh := make(chan Message, 1)
-	errCh := make(chan FailedMessage, 1)
-	
-	select {
-		case receivedMsg := <- msgCh:
-			fmt.Println(receivedMsg)
-		case receivedError := <- errCh:
-			fmt.Println(receivedError)
-		default:
-			fmt.Println("No messages received")
-	}
-	
+    
+    msgCh := make(chan Message, 1)
+    errCh := make(chan FailedMessage, 1)
+    
+    select {
+        case receivedMsg := <- msgCh:
+            fmt.Println(receivedMsg)
+        case receivedError := <- errCh:
+            fmt.Println(receivedError)
+        default:
+            fmt.Println("No messages received")
+    }
+    
 }
 
 type Message struct {
-	To []string
-	From string
-	Content string
+    To []string
+    From string
+    Content string
 }
 
 type FailedMessage struct {
-	ErrorMessage string
-	OriginalMessage Message
+    ErrorMessage string
+    OriginalMessage Message
 }
 */
