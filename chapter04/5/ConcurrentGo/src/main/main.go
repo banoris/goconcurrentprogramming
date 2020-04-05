@@ -1,13 +1,13 @@
-package main 
- 
-import ( 
+package main
+
+import (
     "fmt"
     "runtime"
 )
 
 func main() {
     runtime.GOMAXPROCS(4)
-    
+
     ch := make(chan int)
     go generate(ch)
     for {

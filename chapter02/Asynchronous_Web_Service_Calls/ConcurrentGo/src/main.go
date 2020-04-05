@@ -25,7 +25,7 @@ func main() {
         "tmus",
         "s",
     }
-    
+
     numComplete := 0
 
     for _, symbol := range stockSymbols {
@@ -33,10 +33,10 @@ func main() {
             resp, _ := http.Get("http://dev.markitondemand.com/Api/v2/Quote?symbol=" + symbol)
             defer resp.Body.Close()
             body, _ := ioutil.ReadAll(resp.Body)
-    
+
             quote := new(QuoteResponse)
             xml.Unmarshal(body, &quote)
-    
+
             fmt.Printf("%s: $%.2f\n", quote.Name, quote.LastPrice)
             numComplete++
         }(symbol)
@@ -80,16 +80,16 @@ import (
 )
 
 func main() {
-    
+
     resp, _ := http.Get("http://dev.markitondemand.com/Api/v2/Quote?symbol=googl")
     defer resp.Body.Close()
     body, _ := ioutil.ReadAll(resp.Body)
-    
+
     quote := new(QuoteResponse)
     xml.Unmarshal(body, &quote)
-    
+
     fmt.Printf("%s: %.2f", quote.Name, quote.LastPrice)
-    
+
 }
 
 
@@ -202,7 +202,7 @@ func main() {
         "tmus",
         "s",
     }
-    
+
     numComplete := 0
 
     for _, symbol := range stockSymbols {
@@ -210,10 +210,10 @@ func main() {
             resp, _ := http.Get("http://dev.markitondemand.com/Api/v2/Quote?symbol=" + symbol)
             defer resp.Body.Close()
             body, _ := ioutil.ReadAll(resp.Body)
-    
+
             quote := new(QuoteResponse)
             xml.Unmarshal(body, &quote)
-    
+
             fmt.Printf("%s: $%.2f\n", quote.Name, quote.LastPrice)
             numComplete++
         }(symbol)

@@ -1,48 +1,48 @@
-package main 
- 
-import ( 
+package main
+
+import (
     "fmt"
 )
 
 func main() {
     btn := MakeButton()
-    
+
     handlerOne := make(chan string, 2)
     handlerTwo := make(chan string, 2)
-    
+
     btn.AddEventListener("click", handlerOne)
     btn.AddEventListener("click", handlerTwo)
-    
+
     go func() {
         for {
             msg := <- handlerOne
             fmt.Println("Handler One: " + msg)
         }
     }()
-    
+
     go func() {
         for {
             msg := <- handlerTwo
             fmt.Println("Handler Two: " + msg)
-        } 
+        }
     }()
-    
+
     btn.TriggerEvent("click", "Button clicked!")
-    
+
     btn.RemoveEventListener("click", handlerOne)
-    
+
     btn.TriggerEvent("click", "Button clicked again!")
-    
+
     fmt.Scanln()
 }
 
 type Button struct {
-    eventListeners map[string][]chan string 
+    eventListeners map[string][]chan string
 }
 
 func (this *Button) AddEventListener(event string, responseChannel chan string) {
     if _, present := this.eventListeners[event]; present {
-        this.eventListeners[event] = 
+        this.eventListeners[event] =
             append(this.eventListeners[event], responseChannel)
     } else {
         this.eventListeners[event] = []chan string{responseChannel}

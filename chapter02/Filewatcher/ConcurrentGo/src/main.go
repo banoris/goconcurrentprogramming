@@ -32,7 +32,7 @@ func main() {
                     invoice.PurchaseOrderNumber, _ = strconv.Atoi(r[2])
                     unixTime, _ := strconv.ParseInt(r[3], 10, 64)
                     invoice.InvoiceDate = time.Unix(unixTime, 0)
-                    
+
                     fmt.Printf("Received Invoice '%v' for $%.2f and submitted for processing\n", invoice.Number, invoice.Amount)
                 }
             }(string(data))
