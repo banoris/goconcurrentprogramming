@@ -41,6 +41,7 @@ type Button struct {
 }
 
 func (this *Button) AddEventListener(event string, responseChannel chan string) {
+    // if event already present, append to it; else create eventListeners map
     if _, present := this.eventListeners[event]; present {
         this.eventListeners[event] =
             append(this.eventListeners[event], responseChannel)
@@ -63,6 +64,9 @@ func (this *Button) RemoveEventListener(event string, listenerChannel chan strin
 
 func (this *Button) TriggerEvent(event string, response string) {
     if _, present := this.eventListeners[event]; present {
+        // loop through the slice. Each elem is a channel
+        // Why handle each channel asynchrounously in goroutine?
+        // Because you don't want to block the main thread!
         for _, handler := range this.eventListeners[event] {
             go func(handler chan string) {
                 handler <- response
